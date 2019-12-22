@@ -11,6 +11,7 @@ int printRandoms(int lower, int upper,
 {
     int i, num;
     for (i = 0; i < count; i++)
+    srand(time(0));
     {
         num = (rand() %
                (upper - lower + 1)) +
@@ -57,6 +58,8 @@ char msg[]="/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8U
         bytes_read = read(client, buf, sizeof(buf));
         char *msg_send = NULL;
         int select = printRandoms(0, 2, 1);
+        // int pre_select=select;
+        // while (select==pre_select) select = printRandoms(0, 2, 1);
         // int select=0;
         // printf("%f\n",select);
         if (select == 0 && bytes_read > 0)
