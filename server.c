@@ -41,11 +41,7 @@ int main(int argc, char **argv)
 
     // setsockopt(s, SOL_SOCKET, SO_RCVTIMEO, (const char *)&timeout, sizeof(struct timeval));
 
-    // FD_ZERO(&set);
-    // FD_SET(s, &set);
-
     //set timeout
-    // int rv = select(s + 1, &set, NULL, NULL, &timeout);
     loc_addr.rc_family = AF_BLUETOOTH;
     // loc_addr.rc_bdaddr = *BDADDR_ANY;
     loc_addr.rc_channel = (uint8_t)1;
@@ -65,7 +61,7 @@ int main(int argc, char **argv)
     {
         // read data from the client
         // clock_t start;
-        write(client, "msg", sizeof("msg"));
+        // write(client, "msg", sizeof("msg"));
         printf("waiting to reading...\n");
         bytes_read = read(client, buf, sizeof(buf));
         if (bytes_read <= 0)
@@ -101,7 +97,6 @@ int main(int argc, char **argv)
                 write(client, msg1, sizeof(msg1));
             }
         }
-
     }
 
     // close connection
