@@ -81,19 +81,17 @@ int main(int argc, char **argv)
             printf("Data read: ");
             printf("%s\n", buf);
             int select = printRandoms(0, 2, 1);
+            printf("%d\n", select);
             if (select == 0)
             {
-                printf("%s\n", buf);
                 write(client, msg, sizeof(msg));
             }
             else if (select == 2)
             {
-                printf("%s\n", buf);
                 write(client, msg2, sizeof(msg2));
             }
             else
             {
-                printf("%s\n", buf);
                 write(client, msg1, sizeof(msg1));
             }
         }
