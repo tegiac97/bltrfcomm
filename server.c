@@ -39,9 +39,6 @@ int main(int argc, char **argv)
 
     // setsockopt(s, SOL_SOCKET, SO_RCVTIMEO, (const char *)&timeout, sizeof(struct timeval));
 
-    // FD_ZERO(&set);
-    // FD_SET(s, &set);
-
     //set timeout
     // int rv = select(s + 1, &set, NULL, NULL, &timeout);
     loc_addr.rc_family = AF_BLUETOOTH;
@@ -54,9 +51,8 @@ int main(int argc, char **argv)
     printf("Server listening...\n");
 
     client = accept(s, (struct sockaddr *)&client_addr, &opt);
-
+    ba2str(&client_addr.rc_bdaddr, buf);
     // str2ba("74:40:BB:03:D9:C4", &loc_addr.rc_bdaddr);
-
     fprintf(stderr, "%s\n", buf);
     memset(buf, 0, sizeof(buf));
     while (1)
