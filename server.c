@@ -7,6 +7,9 @@
 #include <bluetooth/rfcomm.h>
 #include <sys/select.h>
 #include <errno.h>
+#include <string.h>
+
+#define PASS_CODE "3243"
 
 char msg[] = "string 1";
 char msg1[] = "string 2";
@@ -76,7 +79,9 @@ int main(int argc, char **argv)
         printf("Data read: ");
         printf("%s\n", buf);
 
-        if(buf!="1265"){
+
+        //authenticaion 
+        if(strcmp(buf, PASS_CODE)){
             continue;
         }
 
@@ -94,7 +99,7 @@ int main(int argc, char **argv)
         {
             write(client, msg1, sizeof(msg1));
         }
-        // }
+        memset(buf, 0, sizeof(buf));
     }
 
     // close connection
