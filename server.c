@@ -56,6 +56,14 @@ int main(int argc, char **argv)
 
     fprintf(stderr, "Connection from %s\n", buf);
     memset(buf, 0, sizeof(buf));
+
+    //AUTH    
+    read(client, buf, sizeof(buf));
+    while (strcmp(buf, PASS_CODE)){
+                printf("pass faild\n");
+        read(client, buf, sizeof(buf));
+    }
+
     while (1)
     {
         // read data from the client
@@ -78,12 +86,6 @@ int main(int argc, char **argv)
         }
         printf("Data read: ");
         printf("%s\n", buf);
-
-
-        //authenticaion 
-        if(strcmp(buf, PASS_CODE)){
-            continue;
-        }
 
         int select = printRandoms(0, 2, 1);
         printf("%d\n", select);
