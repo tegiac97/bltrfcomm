@@ -73,10 +73,13 @@ int main(int argc, char **argv)
             fprintf(stderr, "Connection from %s\n", buf);
             memset(buf, 0, sizeof(buf));
         }
-        // else
-        // {
         printf("Data read: ");
         printf("%s\n", buf);
+
+        if(buf!="1265"){
+            continue;
+        }
+
         int select = printRandoms(0, 2, 1);
         printf("%d\n", select);
         if (select == 0)
