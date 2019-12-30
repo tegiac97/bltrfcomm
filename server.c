@@ -57,10 +57,11 @@ int main(int argc, char **argv)
     fprintf(stderr, "Connection from %s\n", buf);
     memset(buf, 0, sizeof(buf));
 
-    //AUTH    
+    //AUTH
     read(client, buf, sizeof(buf));
-    while (strcmp(buf, PASS_CODE)){
-                printf("pass faild\n");
+    while (strcmp(buf, PASS_CODE))
+    {
+        printf("pass faild\n");
         read(client, buf, sizeof(buf));
     }
 
